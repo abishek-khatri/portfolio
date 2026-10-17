@@ -1,0 +1,232 @@
+/* Notebook theme — tokens and helpers taken from the Figma file */
+:root {
+  --paper: #ece8df;
+  --ink: #14202a;
+  --ember: #c2461c;
+  --pen: #2b4fb0;
+  --card: #f6f3ec;
+  --sticky: #f0d98a;
+}
+
+/* Unlayered, so it wins over the template's base styles */
+body.nb {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-newsreader), Georgia, serif;
+  font-size: 21px;
+  line-height: 1.45;
+  min-height: 100vh;
+}
+
+.nb a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.hand {
+  font-family: var(--font-caveat), 'Comic Sans MS', cursive;
+  font-weight: 700;
+}
+.display {
+  font-family: var(--font-instrument), Georgia, serif;
+  font-weight: 400;
+}
+.c-ink { color: var(--ink); }
+.c-ember { color: var(--ember); }
+.c-pen { color: var(--pen); }
+
+.nb-wrap {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+@media (min-width: 1024px) {
+  .nb-wrap { padding: 0 64px; }
+}
+
+/* Hand-drawn underline. Set --scribble-color on the element to change the color. */
+.scribble {
+  position: relative;
+  display: inline-block;
+}
+.scribble::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -8px;
+  height: 7px;
+  background: var(--scribble-color, var(--ember));
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 12' preserveAspectRatio='none'%3E%3Cpath d='M2 7C40 2 80 11 120 6S200 3 298 7' fill='none' stroke='black' stroke-width='2.5' stroke-linecap='round' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E") no-repeat center / 100% 100%;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 12' preserveAspectRatio='none'%3E%3Cpath d='M2 7C40 2 80 11 120 6S200 3 298 7' fill='none' stroke='black' stroke-width='2.5' stroke-linecap='round' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E") no-repeat center / 100% 100%;
+}
+
+/* Header */
+.nb-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 24px;
+  padding-bottom: 24px;
+}
+.nb-wordmark { font-size: 34px; line-height: 1; }
+.nb-nav { display: flex; align-items: center; gap: 32px; }
+.nb-nav .nav-link { font-size: 19px; position: relative; }
+.nb-nav .nav-link.current::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; bottom: -6px;
+  height: 2px;
+  background: var(--ink);
+}
+.nb-nav .say-hi { font-size: 30px; line-height: 1; --scribble-color: var(--ember); color: var(--ember); }
+
+/* Paper cards with tape */
+.nb-card {
+  position: relative;
+  background: var(--card);
+  padding: 20px;
+  filter: drop-shadow(0 4px 8px rgba(20, 32, 42, 0.1));
+  transition: transform 0.2s ease;
+}
+.nb-card.r1 { transform: rotate(0.5deg); }
+.nb-card.r2 { transform: rotate(-0.5deg); }
+.nb-card.r3 { transform: rotate(1deg); }
+a.nb-card:hover { transform: rotate(0deg) translateY(-4px); }
+
+.tape {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  width: 110px;
+  height: 30px;
+  background: var(--sticky);
+  opacity: 0.6;
+  transform: translateX(-50%) rotate(-3deg);
+}
+.tape.alt { transform: translateX(-50%) rotate(2deg); }
+
+.slot {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 360 / 186;
+  border: 1.5px dashed var(--ink);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+.slot img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.slot .slot-hint { padding: 16px; text-align: center; font-size: 24px; line-height: 1; color: var(--pen); }
+
+.sticky-note {
+  background: var(--sticky);
+  padding: 24px 20px;
+  font-size: 30px;
+  line-height: 32px;
+  filter: drop-shadow(0 4px 8px rgba(20, 32, 42, 0.1));
+  transform: rotate(1.5deg);
+}
+
+/* Hero */
+.hero {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 48px;
+  padding-top: 40px;
+  padding-bottom: 72px;
+}
+@media (min-width: 1024px) {
+  .hero { grid-template-columns: 1.25fr 1fr; padding-top: 70px; }
+}
+.hero-greeting { font-size: 30px; color: var(--pen); margin-bottom: 8px; }
+.hero-title {
+  font-size: clamp(54px, 7.8vw, 112px);
+  line-height: 0.95;
+  letter-spacing: -2.5px;
+}
+.hero-title em { font-family: var(--font-instrument), Georgia, serif; font-style: italic; color: var(--ember); }
+.hero-intro { max-width: 520px; margin-top: 40px; font-size: 21px; line-height: 31px; }
+.hero-cta { display: inline-block; margin-top: 36px; font-size: 38px; line-height: 1; --scribble-color: var(--ember); }
+
+.hero-stage { position: relative; min-height: 560px; }
+.hero-stage .viewer-card { max-width: 500px; margin-left: auto; transform: rotate(0.6deg); }
+.hero-stage .sticky-note { position: absolute; left: 0; bottom: 0; width: 210px; }
+.hero-stage .photo-card { position: absolute; right: 0; bottom: -40px; width: 230px; transform: rotate(-1.5deg); }
+@media (max-width: 1023px) {
+  .hero-stage .sticky-note, .hero-stage .photo-card { position: relative; margin-top: 24px; right: auto; bottom: auto; }
+}
+.caption { font-size: 28px; line-height: 1; margin-top: 12px; }
+
+/* 3D viewer */
+.viewer-canvas { width: 100%; height: 400px; cursor: grab; }
+.viewer-canvas:active { cursor: grabbing; }
+.viewer-slider { display: flex; align-items: center; gap: 12px; padding: 4px 8px 0; font-size: 22px; }
+.viewer-slider input[type='range'] { flex: 1; accent-color: var(--ember); }
+
+/* Sections */
+.section-title { font-size: clamp(44px, 5vw, 76px); line-height: 1; letter-spacing: -1.5px; }
+.section-hint { font-size: 28px; color: var(--pen); margin-top: 8px; }
+.rule { border: 0; border-top: 1px solid var(--ink); opacity: 0.9; margin: 0; }
+
+.card-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 48px 56px;
+  margin-top: 56px;
+  padding-bottom: 72px;
+}
+@media (min-width: 768px) { .card-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1100px) { .card-grid.cols-3 { grid-template-columns: repeat(3, 1fr); } }
+
+.card-title { font-size: 32px; line-height: 1.1; margin-top: 18px; }
+.card-meta { font-size: 28px; line-height: 1; margin-top: 8px; }
+.card-oneliner { font-size: 18px; line-height: 1.35; margin-top: 8px; }
+.card-meta.hardware { color: var(--ink); }
+.card-meta.software { color: var(--pen); }
+.card-meta.threed { color: var(--ember); }
+
+/* Work page */
+.page-head { padding-top: 56px; }
+.eyebrow { font-size: 30px; color: var(--pen); }
+.page-title { font-size: clamp(56px, 7vw, 104px); line-height: 0.95; letter-spacing: -2px; margin-top: 4px; }
+.page-intro { max-width: 520px; margin-top: 24px; }
+.filters { display: flex; flex-wrap: wrap; gap: 28px; margin-top: 32px; padding-bottom: 40px; }
+.filters a { font-size: 30px; line-height: 1.1; position: relative; }
+.filters a.on::after {
+  content: '';
+  position: absolute; left: 0; right: 0; bottom: -4px; height: 3px;
+  background: var(--ember);
+}
+
+/* Software rows */
+.row {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 8px 24px;
+  align-items: center;
+  padding: 28px 0;
+  border-top: 1px solid var(--ink);
+  transition: background 0.2s ease;
+}
+.row:last-child { border-bottom: 1px solid var(--ink); }
+.row:hover { background: rgba(240, 217, 138, 0.25); }
+.row .num { font-size: 36px; color: var(--ink); }
+.row .row-title { font-size: 44px; line-height: 1.05; }
+.row .row-stack { font-size: 28px; color: var(--pen); }
+.row .row-year { font-size: 18px; }
+.row .row-arrow { font-size: 44px; color: var(--ember); }
+.row .row-thumb { width: 190px; height: 120px; border: 1.5px dashed var(--ink); overflow: hidden; }
+.row .row-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+@media (min-width: 1024px) {
+  .row { grid-template-columns: 56px 1.3fr 1.2fr 80px 190px 40px; }
+}
+
+.empty-note { font-size: 28px; color: var(--pen); margin-top: 24px; }
+
+/* Footer */
+.nb-footer { padding-top: 56px; padding-bottom: 32px; margin-top: 48px; border-top: 1px solid var(--ink); }
+.footer-row { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 32px 80px; }
+.footer-title { font-size: clamp(90px, 12vw, 170px); line-height: 0.95; letter-spacing: -4px; }
+.footer-email { font-size: 28px; --scribble-color: var(--ember); margin-bottom: 24px; }
+.footer-copy { font-size: 26px; color: var(--pen); margin-top: 32px; }
