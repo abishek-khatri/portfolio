@@ -46,17 +46,19 @@ export default async function HomePage() {
             <ExplodedEnclosure />
             <p className="hand caption">fig. 1 — exploded view</p>
           </div>
-          <div className="hand sticky-note">
-            drag it.
-            <br />
-            slide to explode
-          </div>
-          <div className="nb-card photo-card">
-            <span className="tape alt" />
-            <div className="slot" style={{ aspectRatio: '190 / 200' }}>
-              <span className="hand slot-hint">a real photo of your board goes here</span>
+          <div className="hero-below">
+            <div className="hand sticky-note">
+              drag it.
+              <br />
+              slide to explode
             </div>
-            <p className="hand caption">first working one</p>
+            <div className="nb-card photo-card">
+              <span className="tape alt" />
+              <div className="slot" style={{ aspectRatio: '190 / 130' }}>
+                <span className="hand slot-hint">a real photo of your board goes here</span>
+              </div>
+              <p className="hand caption">first working one</p>
+            </div>
           </div>
         </div>
       </section>

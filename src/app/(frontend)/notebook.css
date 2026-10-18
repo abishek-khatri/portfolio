@@ -149,13 +149,19 @@ a.nb-card:hover { transform: rotate(0deg) translateY(-4px); }
 .hero-intro { max-width: 520px; margin-top: 40px; font-size: 21px; line-height: 31px; }
 .hero-cta { display: inline-block; margin-top: 36px; font-size: 38px; line-height: 1; --scribble-color: var(--ember); }
 
-.hero-stage { position: relative; min-height: 560px; }
+.hero-stage { position: relative; }
 .hero-stage .viewer-card { max-width: 500px; margin-left: auto; transform: rotate(0.6deg); }
-.hero-stage .sticky-note { position: absolute; left: 0; bottom: 0; width: 210px; }
-.hero-stage .photo-card { position: absolute; right: 0; bottom: -40px; width: 230px; transform: rotate(-1.5deg); }
-@media (max-width: 1023px) {
-  .hero-stage .sticky-note, .hero-stage .photo-card { position: relative; margin-top: 24px; right: auto; bottom: auto; }
+.hero-below {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  max-width: 500px;
+  margin: 36px 0 0 auto;
 }
+.hero-below .sticky-note { width: 210px; }
+.hero-below .photo-card { width: 230px; transform: rotate(-1.5deg); }
 .caption { font-size: 28px; line-height: 1; margin-top: 12px; }
 
 /* 3D viewer */
@@ -230,3 +236,108 @@ a.nb-card:hover { transform: rotate(0deg) translateY(-4px); }
 .footer-title { font-size: clamp(90px, 12vw, 170px); line-height: 0.95; letter-spacing: -4px; }
 .footer-email { font-size: 28px; --scribble-color: var(--ember); margin-bottom: 24px; }
 .footer-copy { font-size: 26px; color: var(--pen); margin-top: 32px; }
+
+/* Project page */
+.back-link { display: inline-block; margin-top: 8px; font-size: 30px; }
+.detail-top {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 48px;
+  padding-top: 32px;
+  padding-bottom: 24px;
+}
+@media (min-width: 1024px) {
+  .detail-top { grid-template-columns: minmax(0, 470px) minmax(0, 1fr); gap: 64px; padding-top: 48px; }
+}
+.detail-eyebrow { font-size: 28px; color: var(--pen); }
+.detail-title { font-size: clamp(52px, 6.1vw, 88px); line-height: 1.02; letter-spacing: -2px; margin-top: 8px; }
+.detail-intro { font-size: 20px; line-height: 30px; margin-top: 24px; }
+.facts { margin-top: 32px; border-top: 1px solid var(--ink); }
+.fact {
+  display: grid;
+  grid-template-columns: 146px 1fr;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--ink);
+  font-size: 18px;
+}
+.fact .fact-label { font-style: italic; }
+.disciplines { display: flex; flex-wrap: wrap; gap: 32px; margin-top: 32px; font-size: 30px; line-height: 1; }
+.detail-links { display: flex; gap: 24px; margin-top: 24px; font-size: 28px; color: var(--pen); }
+
+.detail-viewer { padding: 28px 32px 24px; }
+.viewer-hint { font-size: 28px; color: var(--pen); }
+.detail-viewer-body { display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 8px; }
+@media (min-width: 760px) {
+  .detail-viewer-body { grid-template-columns: minmax(0, 1fr) 210px; align-items: center; }
+}
+.detail-viewer .viewer-canvas { height: 480px; }
+.parts { display: flex; flex-direction: column; gap: 36px; }
+.part-name { position: relative; padding-left: 36px; font-size: 30px; line-height: 1; }
+.part-name::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 55%;
+  width: 28px;
+  border-top: 1.5px solid var(--ink);
+}
+.part-note { padding-left: 36px; margin-top: 6px; font-style: italic; font-size: 16px; color: var(--pen); }
+
+.sec { padding-top: 64px; }
+.sec-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 24px; }
+.sec-title { font-size: clamp(40px, 4.4vw, 64px); line-height: 1; letter-spacing: -1.2px; }
+.sec-hint { font-style: italic; font-size: 19px; color: var(--pen); }
+
+.results {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 32px;
+  margin-top: 32px;
+}
+.result { padding: 8px 24px 24px; }
+.result .num { font-size: 84px; line-height: 1.1; --scribble-color: var(--ember); }
+.result .unit { font-size: 20px; margin-top: 18px; }
+.result .cap { font-style: italic; font-size: 16px; margin-top: 4px; }
+
+.figures {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px;
+  margin-top: 56px;
+}
+.figures .slot { aspect-ratio: 600 / 230; }
+.fig-caption { font-size: 28px; line-height: 1; margin-top: 14px; }
+
+.notes { display: grid; grid-template-columns: 1fr; gap: 32px; margin-top: 40px; align-items: start; }
+@media (min-width: 900px) {
+  .notes { grid-template-columns: minmax(0, 1fr) 60px minmax(0, 1fr); }
+}
+.note-card { padding: 22px 28px 20px; min-height: 280px; }
+.note-card h3 { font-size: 38px; line-height: 1; }
+.note-lines { margin-top: 28px; }
+.note-line { min-height: 44px; border-bottom: 1px solid var(--ink); padding-top: 12px; font-size: 19px; line-height: 1.2; }
+.note-arrow { display: none; font-size: 64px; line-height: 1; color: var(--ember); text-align: center; align-self: center; }
+@media (min-width: 900px) { .note-arrow { display: block; } }
+
+.versions { display: grid; grid-template-columns: 1fr; gap: 32px; margin-top: 40px; }
+@media (min-width: 900px) { .versions { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.version .v-head { display: flex; justify-content: space-between; align-items: baseline; }
+.version .v-label { font-size: 52px; line-height: 1; }
+.version .v-date { font-size: 24px; color: var(--pen); }
+.version .slot { aspect-ratio: 340 / 130; margin-top: 16px; }
+.version .v-note { font-size: 17px; margin-top: 16px; }
+
+.widget-card { padding: 32px 40px; margin-top: 40px; }
+.widget-grid { display: grid; grid-template-columns: 1fr; gap: 32px; }
+@media (min-width: 900px) { .widget-grid { grid-template-columns: 400px minmax(0, 1fr); } }
+.widget-title { font-size: 36px; color: var(--pen); line-height: 1; }
+.widget-copy { font-size: 19px; line-height: 28px; margin-top: 16px; }
+.widget-slider { margin-top: 40px; }
+.widget-slider input { width: 100%; accent-color: var(--ember); }
+.widget-slider .labels { display: flex; justify-content: space-between; font-size: 24px; }
+.widget-fc { font-size: 56px; line-height: 1; color: var(--ember); margin-top: 32px; }
+.widget-chart svg { display: block; width: 100%; height: auto; }
+
+.detail-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 64px; }
+.detail-nav a { font-size: 34px; }
+.detail-nav a.next { font-size: 44px; --scribble-color: var(--ember); }

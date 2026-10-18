@@ -825,6 +825,91 @@ export interface Project {
     | null;
   githubUrl?: string | null;
   liveUrl?: string | null;
+  /**
+   * Shown as the coloured words under the facts. Pick every kind of work this project has.
+   */
+  disciplines?: ('hardware' | 'software' | '3d')[] | null;
+  /**
+   * Your part in it.
+   */
+  role?: string | null;
+  /**
+   * For example 2026.
+   */
+  year?: string | null;
+  /**
+   * For example: built, tested, shipped.
+   */
+  status?: string | null;
+  /**
+   * The labels beside the 3D viewer, from the top part to the bottom part.
+   */
+  parts?:
+    | {
+        /**
+         * For example: lid
+         */
+        name: string;
+        /**
+         * What it is, in a few words.
+         */
+        note?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  results?:
+    | {
+        /**
+         * The big number, for example 92
+         */
+        value: string;
+        /**
+         * For example: % accuracy
+         */
+        unit?: string | null;
+        /**
+         * What was measured.
+         */
+        caption?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * A scope trace, data screenshot or system diagram.
+   */
+  figures?:
+    | {
+        image: number | Media;
+        caption?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * One thought per line. Each line goes on its own notebook line.
+   */
+  whatBroke?: string | null;
+  /**
+   * One thought per line.
+   */
+  howFixed?: string | null;
+  versions?:
+    | {
+        /**
+         * For example: v1
+         */
+        label: string;
+        /**
+         * For example: Mar 2026
+         */
+        date?: string | null;
+        image?: (number | null) | Media;
+        /**
+         * What changed, and why.
+         */
+        note?: string | null;
+        id?: string | null;
+      }[]
+    | null;
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
@@ -1436,6 +1521,43 @@ export interface ProjectsSelect<T extends boolean = true> {
       };
   githubUrl?: T;
   liveUrl?: T;
+  disciplines?: T;
+  role?: T;
+  year?: T;
+  status?: T;
+  parts?:
+    | T
+    | {
+        name?: T;
+        note?: T;
+        id?: T;
+      };
+  results?:
+    | T
+    | {
+        value?: T;
+        unit?: T;
+        caption?: T;
+        id?: T;
+      };
+  figures?:
+    | T
+    | {
+        image?: T;
+        caption?: T;
+        id?: T;
+      };
+  whatBroke?: T;
+  howFixed?: T;
+  versions?:
+    | T
+    | {
+        label?: T;
+        date?: T;
+        image?: T;
+        note?: T;
+        id?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
   _status?: T;
