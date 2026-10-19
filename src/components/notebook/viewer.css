@@ -1,0 +1,31 @@
+/* Controls around the real 3D model viewer */
+.viewer-modes {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px 22px;
+  font-size: 26px;
+  line-height: 1;
+  padding: 0 8px 6px;
+}
+.viewer-modes button {
+  all: unset;
+  position: relative;
+  cursor: pointer;
+  font-size: 26px;
+  line-height: 1;
+}
+.viewer-modes button:focus-visible { outline: 2px solid var(--pen); outline-offset: 4px; }
+.viewer-modes button.on::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; bottom: -5px;
+  height: 2px;
+  background: var(--ember);
+}
+.viewer-modes .status { margin-left: auto; font-size: 22px; color: var(--pen); }
+.viewer-note { font-size: 22px; line-height: 1.1; color: var(--pen); padding: 6px 8px 0; }
+.viewer-error { font-size: 24px; line-height: 1.1; color: var(--ember); padding: 0 8px 8px; }
+
+/* Without part labels, let the viewer use the whole card width */
+.detail-viewer-body:not(:has(.parts)) { grid-template-columns: 1fr; }

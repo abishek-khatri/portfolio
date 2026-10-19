@@ -112,6 +112,22 @@ export const Projects: CollectionConfig = {
     },
     {
       type: 'collapsible',
+      label: 'Project page — 3D model',
+      admin: { initCollapsed: false },
+      fields: [
+        {
+          name: 'model',
+          type: 'upload',
+          relationTo: 'media',
+          admin: {
+            description:
+              'Upload a .glb file (keep it under about 15 MB). If you leave this empty, a sample box is shown instead.',
+          },
+        },
+      ],
+    },
+    {
+      type: 'collapsible',
       label: 'Project page — 3D viewer parts (up to 4)',
       admin: { initCollapsed: true },
       fields: [

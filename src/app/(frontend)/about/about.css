@@ -1,0 +1,75 @@
+/* About page */
+.about-top {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 48px;
+  padding-top: 32px;
+  padding-bottom: 64px;
+}
+@media (min-width: 1024px) {
+  .about-top { grid-template-columns: 460px minmax(0, 1fr); gap: 96px; }
+}
+.portrait { padding: 20px; transform: rotate(-0.4deg); }
+.portrait .slot { aspect-ratio: 420 / 500; }
+.portrait .slot-hint { font-size: 30px; line-height: 34px; }
+.portrait .caption { font-size: 26px; margin-top: 18px; }
+
+.about-eyebrow { font-size: 30px; color: var(--pen); }
+.about-title {
+  font-size: clamp(56px, 7.2vw, 104px);
+  line-height: 1.02;
+  letter-spacing: -2.5px;
+  margin-top: 4px;
+}
+.about-title em { font-family: var(--font-instrument), Georgia, serif; font-style: italic; color: var(--ember); }
+.about-lead { font-size: 23px; line-height: 34px; margin-top: 32px; max-width: 700px; }
+.about-p { font-size: 20px; line-height: 30px; margin-top: 28px; max-width: 700px; }
+
+.about-facts { margin-top: 56px; max-width: 700px; border-top: 1px solid var(--ink); }
+.about-fact {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--ink);
+  font-size: 19px;
+}
+.about-fact .about-fact-label { font-style: italic; font-size: 18px; }
+.about-fact a { text-decoration: underline; text-underline-offset: 3px; }
+
+.about-work { border-top: 1px solid var(--ink); padding-top: 32px; }
+.skills {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  padding-top: 40px;
+  padding-bottom: 64px;
+}
+@media (min-width: 800px) { .skills { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 56px; } }
+.skill-name { font-size: 40px; line-height: 1; }
+.skill-text { font-size: 20px; line-height: 30px; margin-top: 28px; max-width: 360px; }
+
+.about-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 48px;
+  padding-top: 16px;
+  padding-bottom: 32px;
+}
+.studying {
+  width: 340px;
+  max-width: 100%;
+  min-height: 250px;
+  padding: 20px 24px;
+  transform: rotate(-1deg);
+}
+.studying .studying-title { font-size: 30px; line-height: 1.1; color: var(--pen); }
+.studying ul { list-style: none; margin: 18px 0 0; padding: 0; font-size: 32px; line-height: 38px; }
+
+.doodles { display: flex; flex-wrap: wrap; gap: 28px; align-items: flex-end; padding-top: 8px; }
+.doodle svg { display: block; width: 90px; height: auto; }
+.doodle .hand { font-size: 22px; line-height: 1; color: var(--pen); margin-top: 6px; }
+
+.sayhi { margin-left: auto; padding-top: 8px; }
+.sayhi .big { font-size: clamp(44px, 5vw, 64px); line-height: 1; color: var(--ember); --scribble-color: var(--ember); }
+.sayhi .mail { display: block; font-style: italic; font-size: 22px; margin-top: 28px; }

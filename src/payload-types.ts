@@ -842,6 +842,10 @@ export interface Project {
    */
   status?: string | null;
   /**
+   * Upload a .glb file (keep it under about 15 MB). If you leave this empty, a sample box is shown instead.
+   */
+  model?: (number | null) | Media;
+  /**
    * The labels beside the 3D viewer, from the top part to the bottom part.
    */
   parts?:
@@ -1525,6 +1529,7 @@ export interface ProjectsSelect<T extends boolean = true> {
   role?: T;
   year?: T;
   status?: T;
+  model?: T;
   parts?:
     | T
     | {
@@ -1908,6 +1913,39 @@ export interface SiteSetting {
   email?: string | null;
   footerText?: string | null;
   aboutPhoto?: (number | null) | Media;
+  /**
+   * Shown under your photo.
+   */
+  aboutPhotoCaption?: string | null;
+  /**
+   * The first, larger paragraph.
+   */
+  aboutLead?: string | null;
+  aboutParagraph2?: string | null;
+  aboutParagraph3?: string | null;
+  aboutRightNow?: string | null;
+  aboutLookingFor?: string | null;
+  githubUrl?: string | null;
+  linkedinUrl?: string | null;
+  skillsHardware?: string | null;
+  skillsSoftware?: string | null;
+  skills3d?: string | null;
+  /**
+   * One subject per line. Shown on the yellow sticky note.
+   */
+  studying?: string | null;
+  /**
+   * The intro on the Hardware page.
+   */
+  drawerHardwareIntro?: string | null;
+  /**
+   * The intro on the Software page.
+   */
+  drawerSoftwareIntro?: string | null;
+  /**
+   * The intro on the 3D models page.
+   */
+  drawer3dIntro?: string | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -1969,6 +2007,21 @@ export interface SiteSettingsSelect<T extends boolean = true> {
   email?: T;
   footerText?: T;
   aboutPhoto?: T;
+  aboutPhotoCaption?: T;
+  aboutLead?: T;
+  aboutParagraph2?: T;
+  aboutParagraph3?: T;
+  aboutRightNow?: T;
+  aboutLookingFor?: T;
+  githubUrl?: T;
+  linkedinUrl?: T;
+  skillsHardware?: T;
+  skillsSoftware?: T;
+  skills3d?: T;
+  studying?: T;
+  drawerHardwareIntro?: T;
+  drawerSoftwareIntro?: T;
+  drawer3dIntro?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

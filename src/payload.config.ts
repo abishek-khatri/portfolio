@@ -1,6 +1,7 @@
 import { SiteSettings } from './globals/SiteSettings'
 import { Projects } from './collections/Projects'
 import { postgresAdapter } from '@payloadcms/db-postgres'
+import { vercelBlobStorage } from '@payloadcms/storage-vercel-blob'
 import sharp from 'sharp'
 import path from 'path'
 import { buildConfig, PayloadRequest } from 'payload'
@@ -67,7 +68,19 @@ export default buildConfig({
   collections: [Pages, Posts, Media, Categories, Users, Projects],
   cors: [getServerSideURL()].filter(Boolean),
   globals: [Header, Footer, SiteSettings],
-  plugins,
+  plugins: [
+    ...plugins,
+    // Stores uploaded images and 3D models in Vercel Blob when the site is online.
+    // Without a BLOB_READ_WRITE_TOKEN (for example on your own computer) it switches
+    // itself off and files keep going to public/media as before.
+    vercelBlobStorage({
+      enabled: Boolean(process.env.BLOB_READ_WRITE_TOKEN),
+      collections: { media: true },
+      token: process.env.BLOB_READ_WRITE_TOKEN || '',
+      // Uploads go straight from the browser to storage, which avoids Vercel's 4.5 MB limit.
+      clientUploads: true,
+    }),
+  ],
   secret: process.env.PAYLOAD_SECRET,
   sharp,
   typescript: {

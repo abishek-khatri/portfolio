@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation'
 import { getPayload } from 'payload'
 import React from 'react'
 
-import { ExplodedEnclosure } from '@/components/notebook/ExplodedEnclosure'
+import { ProjectViewer } from '@/components/notebook/ModelViewer'
 import type { Media } from '@/payload-types'
 import { getMediaUrl } from '@/utilities/getMediaUrl'
 
@@ -76,6 +76,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
     { label: 'status', value: project.status },
   ].filter((f) => f.value)
 
+  const modelUrl = mediaOf(project.model, project.title)?.url ?? null
   const parts = project.parts || []
   const results = project.results || []
   const figures = project.figures || []
@@ -142,7 +143,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
           <span className="tape" />
           <p className="hand viewer-hint">drag to turn it around</p>
           <div className="detail-viewer-body">
-            <ExplodedEnclosure />
+            <ProjectViewer url={modelUrl} />
             {parts.length > 0 && (
               <div className="parts">
                 {parts.map((part, i) => (
